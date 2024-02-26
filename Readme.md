@@ -18,6 +18,8 @@ Es una librería que permite interactuar con los elementos de una web
 Qué es Cucumber
 Es una librería para escribir en lenguaje amigable el comportamiento del sistema (BDD)
 
+El bloque estático es un bloque de declaración dentro de una clase Java que se ejecutará cuando una clase se cargue por primera vez en el JVM.
+
 *******************************************************************************
 
 
@@ -42,3 +44,9 @@ actor.wasAbleTo -> entrar en la página
 actor.attempsTo -> realizar acción
 
 Desventaja: más complicado de mantener, difícil separar responsabilidades entre clases, más curva de aprendizaje
+
+##Locators
+* Usar SelectorHub, plugin de chrome
+    * Usar textos
+    * Evitar índices específicos
+
