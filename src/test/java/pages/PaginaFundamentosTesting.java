@@ -8,7 +8,7 @@ public class PaginaFundamentosTesting extends BasePage {
         super(driver);
     }
  
-    public void clickFundamentosTestingLink() {
+    public void clickIntroduccionTestingLink() {
         clickElement(fundamentosTestingLink);
     }
  

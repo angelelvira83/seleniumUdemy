@@ -50,3 +50,24 @@ Desventaja: más complicado de mantener, difícil separar responsabilidades entr
     * Usar textos
     * Evitar índices específicos
 
+
+## Comando
+
+Para poder correr los tests desde la línea de comandos "maven style" hay que añadir en el task del build.gradle:
+systemProperties System.getProperties();
+
+Luego se ejecuta esta línea
+gradle test -Dcucumber.filter.tags="@Tag"
+
+## Expresiones regulares
+
+* Empezar siempre con el gorrito y acabar con el dolar
+* Separar opciones con | y empezar con el ?:
+* Con interrogante y una letra, opcionalidad
+* {int}, {string}, {word}...
+
+    @When("^(?:I|The user|The client) select?s Elegir Plan$")
+    public void selectElegirPlan() {
+        landingPage.clickOnElegirPlanButton();
+    }
+ 
