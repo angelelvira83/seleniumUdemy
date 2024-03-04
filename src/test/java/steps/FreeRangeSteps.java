@@ -7,6 +7,7 @@ import org.testng.asserts.SoftAssert;
 import java.util.Arrays;
  
 import io.cucumber.java.en.*;
+import pages.BasePage;
 import pages.PaginaCursos;
 import pages.PaginaFundamentosTesting;
 import pages.PaginaPrincipal;
@@ -23,6 +24,11 @@ public class FreeRangeSteps {
     @Given("I navigate to www.freerangetesters.com")
     public void iNavigateToFRT() {
         landingPage.navigateToFreeRangeTesters();
+    }
+
+    @Given("I navigate to google")
+    public void iNavigateToGoogle() throws InterruptedException {
+        landingPage.navigateToGoogle();
     }
  
     @When("I go to {word} using the navigation bar")
@@ -50,5 +56,17 @@ public class FreeRangeSteps {
  
         Assert.assertEquals(listaEsperada, lista);
     }
- 
+
+    @Then("The client do thins with actions data")
+    public void doThinsWithActionsData () {
+        landingPage.hoverIgButton();
+    }
+
+
+    @When("I write text in filter")
+    public void cosas () {
+        landingPage.condiciones();
+    }
+
+
 }

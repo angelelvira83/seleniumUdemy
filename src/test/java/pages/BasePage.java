@@ -13,15 +13,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.interactions.Actions;
  
 import io.github.bonigarcia.wdm.WebDriverManager;
  
 public class BasePage {
+
+    private static Actions action;
+
     /*
      * Declaración de una variable estática 'driver' de tipo WebDriver
      * Esta variable va a ser compartida por todas las instancias de BasePage y sus subclases
      */
     protected static WebDriver driver;
+
     /*
      * Declaración de una variable de instancia 'wait' de tipo WebDriverWait.
      * Se inicializa inmediatamente con una instancia dew WebDriverWait utilizando el 'driver' estático
@@ -65,28 +70,38 @@ public class BasePage {
     private WebElement Find(String locator) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
     }
+
+    // Encuentra y devuelve una lista de elementos en la página utilizando un locator XPath
+    public List<WebElement> findAllElements(String locator) {
+        return driver.findElements(By.className(locator));
+    }
  
+    // Click a un elemento por locator
     public void clickElement(String locator) {
         Find(locator).click();
     }
  
+    // Encuentra el locator de una caja de texto, la limpia y escribe algo en él
     public void write(String locator, String keysToSend) {
         Find(locator).clear();
         Find(locator).sendKeys(keysToSend);
     }
- 
+
+    // Selecciona un valor de un dropdown por valor
     public void selectFromDropdownByValue(String locator, String value) {
         Select dropdown = new Select(Find(locator));
  
         dropdown.selectByValue(value);
     }
  
+    // Selecciona un valor de un dropdown por index
     public void selectFromDropdownByIndex(String locator, Integer index) {
         Select dropdown = new Select(Find(locator));
  
         dropdown.selectByIndex(index);
     }
  
+    // Obtiene el tamaño de un dropdown
     public int dropdownSize(String locator) {
         Select dropdown = new Select(Find(locator));
  
@@ -95,6 +110,7 @@ public class BasePage {
         return dropdownOptions.size();
     }
  
+    // Obtiene una lista de elementos de un dropdown
     public List<String> getDropdownValues(String locator) {
         Select dropdown = new Select(Find(locator));
  
@@ -107,5 +123,53 @@ public class BasePage {
         return values;
  
     }
+
+    // ACTIONS
+
+    // Pasar el ratón por encima
+    public void hoverOverElement(String locator) {
+        action.moveToElement(Find(locator));    
+    }
+
+    // Doble click
+    public void doubleClickElement(String locator) {
+        action.doubleClick(Find(locator));    
+    }
+
+    // Click derecho
+    public void rightClickElement(String locator) {
+        action.contextClick(Find(locator));    
+    }
+
+    // TABLA
+
+    // Coge un valor de una fila/columna. Locator general de la tabla
+    public String getValueFromTable(String locator, int row, int col) {
+        String cellINeed = locator+"/table/tbody/tr["+row+"]/td["+col+"]";
+        return Find(cellINeed).getText();
+    }
+
+    // Setea un valor de una fila/columna. Locator general de la tabla
+    public void setValueFromTable(String locator, int row, int col, String textToSet) {
+        String cellINeed = locator+"/table/tbody/tr["+row+"]/td["+col+"]";
+        Find(cellINeed).sendKeys(textToSet);
+    }
+
+    // iFRAME y PopUps
+    // Cambia al driver por index
+    public void switchToIFrame(int indexIFrame) {
+        driver.switchTo().frame(indexIFrame);
+    }
+
+    // Cambia al padre
+    public void switchToParentFrame() {
+        driver.switchTo().parentFrame();
+    }
+
+    // Descrata una alerta
+    public void dismissAlert() {
+        driver.switchTo().alert().dismiss();
+    }
+
  
 }

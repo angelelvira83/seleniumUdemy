@@ -21,6 +21,8 @@ public class Hooks extends BasePage {
                     .getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "Screenshot of the error");
         }
+
+
     }
  
 }

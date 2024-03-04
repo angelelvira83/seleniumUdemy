@@ -71,3 +71,11 @@ gradle test -Dcucumber.filter.tags="@Tag"
         landingPage.clickOnElegirPlanButton();
     }
  
+# Upload files
+* Se adjunta word con lo que se explica
+
+# PageFactory
+* Se adjunta en word
+
+# Expresiones regulares
+* Se adjunta en word
