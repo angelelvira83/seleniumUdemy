@@ -9,8 +9,9 @@ import pages.BasePage;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/features", // Directorio de nuestros archivos .feature
         glue = "steps", // Paquete donde tenemos nuestras clases definiendo los steps
-        plugin = { "pretty", "json:target/cucumber-reports.json" })
-       //plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter", "json:target/cucumber-reports.json"})
+        //plugin = { "pretty", "json:target/cucumber-reports.json" })
+       plugin = {"html:com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter", "json:target/cucumber-reports.json"},
+       monochrome = true)
 //@CucumberOptions(features = "src/test/resources/features", // Directorio de nuestros archivos .feature
 //        glue = "steps", // Paquete donde tenemos nuestras clases definiendo los steps
 //        plugin = { "pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" })

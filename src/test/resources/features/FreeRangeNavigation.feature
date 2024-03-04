@@ -27,6 +27,7 @@ Feature: Navigation
 #        When The client selects Elegir Plan
 #        Then The client can validate the options in the checkout page
 
+@lll
     Scenario: Testing Actions feature
         Given I navigate to google
         When I write text in filter
