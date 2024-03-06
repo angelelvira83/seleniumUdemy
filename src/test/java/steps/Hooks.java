@@ -5,9 +5,9 @@ import org.openqa.selenium.TakesScreenshot;
  
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
-import pages.BasePage;
+import pages.AmazonBasePage;
  
-public class Hooks extends BasePage {
+public class Hooks extends AmazonBasePage {
  
     public Hooks() {
         super(driver);
